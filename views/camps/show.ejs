@@ -1,0 +1,65 @@
+<%-include("../partials/header")%>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <p class="lead">Yelp Camp</p>
+      <div class="list-group">
+        <li class="list-group-item active">info-1</li>
+        <li class="list-group-item">info-2</li>
+        <li class="list-group-item">info-3</li>
+      </div>
+      </div>
+      <div class="col-md-9">
+        <div class="thumbnail">
+            <img src="<%= camp.iUrl %>" class="image-responsive">
+            <div class="caption">
+                  <h4 class="pull-right">$<%=camp.price%>/night</h4>
+                  <h4><a><%=camp.name %></a></h4>
+                  <p><%=camp.desc%></p>
+                  <p>
+                    <em>Submitted By</em> <%= camp.author.username %>
+                  </p>
+                <% if(user && camp.author.username==user.username){%>
+                  <a href="/campgrounds/<%=camp.id%>/edit" class="btn btn-large btn-warning">Edit</a>
+                  <form  action="/campgrounds/<%=camp.id%>/delete?_method=delete" class="d" method="post">
+                    <button class="btn btn-large btn-danger">Delete</button>
+                  </form>
+              <%  } %>
+            </div>
+          </div>
+          <div class="well">
+            <div class="text-right">
+              <a href="<%="/campgrounds/"+camp._id+"/comments/new"%>" class="btn btn-success">leave a Review</a>
+            </div>
+            <hr>
+            <% camp.comments.forEach(function(co){ %>
+                <div class="row">
+                  <div class="col-md-12">
+                     <strong><%= co.author.username%></strong>
+                    <span class="pull-right">10 days ago</span>
+                    <p>
+                         <%= co.content %>
+                    </p>
+              <%    if(user && co.author.id.equals(user._id)){ %>
+                         <a href="/campgrounds/<%=camp._id %>/comments/<%=co._id%>/edit" class="btn btn-xs btn-warning">Edit</a>
+                         <form class="d" action="/campgrounds/<%=camp._id %>/comments/<%=co._id %>/delete?_method=delete" method="post">
+                              <button class="btn btn-xs btn-danger">Delete</button>
+                         </form>
+                  <%}%>
+
+            </div>
+                </div>
+            <%  }) ; %>
+          </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+<%-include("../partials/footer")%>

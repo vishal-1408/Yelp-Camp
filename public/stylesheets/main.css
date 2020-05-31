@@ -1,0 +1,20 @@
+.thumbnail img{
+  width:100%;
+
+}
+
+.thumbnail{
+  padding:0;
+}
+
+.d{
+  display: inline;
+}
+
+.lo{
+  margin: 0 auto 0 auto;
+}
+
+.actions{
+  text-align: center;
+}
