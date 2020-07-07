@@ -5,4 +5,4 @@ A web Application for posting the reviews and information about various campgrou
 My first project :smile:
 
 # License
-MIT © Yourname
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
